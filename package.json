@@ -1,0 +1,31 @@
+{
+  "name": "wetube",
+  "version": "1.0.0",
+  "description": "wetube",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon -L --exec babel-node src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/k7nsuy/wetube.git"
+  },
+  "author": "Jordan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/k7nsuy/wetube/issues"
+  },
+  "homepage": "https://github.com/k7nsuy/wetube#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "morgan": "^1.10.0",
+    "pug": "^3.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.16.5",
+    "@babel/node": "^7.16.5",
+    "@babel/preset-env": "^7.16.5",
+    "kill-port": "^1.6.1",
+    "nodemon": "^2.0.15"
+  }
+}
