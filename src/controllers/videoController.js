@@ -1,5 +1,31 @@
 export const home = (req, res) => {
-    res.render("home", {pageTitle: "home"});
+    const videos = [
+    {
+        title: "First",
+        rating: 5,
+        comments: 2,
+        createdAt: "2 minutes ago",
+        views: 59,
+        id: 1
+    },
+    {
+        title: "Second",
+        rating: 5,
+        comments: 2,
+        createdAt: "2 minutes ago",
+        views: 59,
+        id: 1
+    },
+    {
+        title: "Third",
+        rating: 5,
+        comments: 2,
+        createdAt: "2 minutes ago",
+        views: 59,
+        id: 1
+    }
+    ];
+    res.render("home", {pageTitle: "Home", videos });
 }
 
 export const search = (req, res) => {
@@ -11,7 +37,7 @@ export const uploadVideo = (req, res) => {
 }
 
 export const seeVideo = (req, res) => {
-    res.render("watch", {pageTitle: "watch"});
+    res.render("watch", {pageTitle: "Watch"});
 }
 
 export const editVideo = (req, res) => {
