@@ -1,5 +1,4 @@
-export const home = (req, res) => {
-    const videos = [
+let videos = [
     {
         title: "First",
         rating: 5,
@@ -13,8 +12,8 @@ export const home = (req, res) => {
         rating: 5,
         comments: 2,
         createdAt: "2 minutes ago",
-        views: 59,
-        id: 1
+        views: 1,
+        id: 2
     },
     {
         title: "Third",
@@ -22,9 +21,11 @@ export const home = (req, res) => {
         comments: 2,
         createdAt: "2 minutes ago",
         views: 59,
-        id: 1
+        id: 3
     }
     ];
+
+export const home = (req, res) => {
     res.render("home", {pageTitle: "Home", videos });
 }
 
@@ -36,12 +37,20 @@ export const uploadVideo = (req, res) => {
     res.send("upload Video");
 }
 
-export const seeVideo = (req, res) => {
-    res.render("watch", {pageTitle: "Watch"});
+export const watchVideo = (req, res) => {
+    const id = req.params.id; // const { id } = req.params
+    const video = videos[id - 1];
+    return res.render("watch", {pageTitle: `Watching ${video.title}`, video});
 }
 
-export const editVideo = (req, res) => {
-    res.send("Edit video");
+export const getEdit = (req, res) => {
+    const id = req.params.id; // const { id } = req.params
+    const video = videos[id - 1];
+    return res.render("edit", {pageTitle: `Editing: ${video.title}`, video});
+}
+
+export const postEdit = (req, res) => {
+
 }
 
 export const deleteVideo = (req, res) => {
