@@ -50,7 +50,11 @@ export const getEdit = (req, res) => {
 }
 
 export const postEdit = (req, res) => {
-
+    const { id } = req.params;
+    console.log(req.body); // post request로 보낸 data를 받는다.
+    const { title } = req.body; 
+    videos[0].title = title;
+    return res.redirect(`/videos/${id}`) // save click 후 redirection
 }
 
 export const deleteVideo = (req, res) => {

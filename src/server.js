@@ -23,6 +23,9 @@ app.set("views", process.cwd() + "/src/views");
 
 app.use(logger);
 
+// express app이 form의 value를 이해할 수 있도록 하고, jS형식으로 변경
+app.use(express.urlencoded({ extended: true}));
+
 app.use("/", globalRouter);
 app.use("/videos", videoRouter);
 app.use("/users", userRouter);

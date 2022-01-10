@@ -2,6 +2,7 @@ extends base.pug
 
 block content
     h4 Change Title of video
+    //- save를 click 시 post request로 데이터를 back-end로 보냄
     form(method="POST")
         input(name="title", placeholder="Video title", value=video.title, required) 
         input(value="Save", type="submit")
