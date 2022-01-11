@@ -11,8 +11,8 @@ import video from "../models/video"; // database model
 //     res.render("home", {pageTitle: "Home", videos= [] });}
 
 export const home = async(req, res) => {
-    // {} => search term => 모든 data 형태 검색
-    const videos = await video.find({});
+    // await을 사용하면 callback과 달리 database에게 결과값을 받을 때 까지 기다린다.
+    const videos = await video.find({}); 
     return res.render("home", {pageTitle: "Home", videos });
 };
 
