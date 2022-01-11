@@ -1,33 +1,21 @@
-let videos = [
-    {
-        title: "First",
-        rating: 5,
-        comments: 2,
-        createdAt: "2 minutes ago",
-        views: 59,
-        id: 1
-    },
-    {
-        title: "Second",
-        rating: 5,
-        comments: 2,
-        createdAt: "2 minutes ago",
-        views: 1,
-        id: 2
-    },
-    {
-        title: "Third",
-        rating: 5,
-        comments: 2,
-        createdAt: "2 minutes ago",
-        views: 59,
-        id: 3
-    }
-    ];
+import video from "../models/video"; // database model
 
-export const home = (req, res) => {
-    res.render("home", {pageTitle: "Home", videos });
-}
+// const handleSearch = (error, videos) => {
+//     console.log("errors", error);
+//     console.log("videos", videos);
+// };
+
+// export const home = (req, res) => {
+//     // {} => search term => 모든 data 형태 검색
+//     video.find({}, handleSearch); // callback function - err,document를 수신
+//     res.render("home", {pageTitle: "Home", videos= [] });}
+
+export const home = async(req, res) => {
+    // {} => search term => 모든 data 형태 검색
+    const videos = await video.find({});
+    return res.render("home", {pageTitle: "Home", videos });
+};
+
 
 export const search = (req, res) => {
     res.send("Search");
@@ -39,25 +27,31 @@ export const uploadVideo = (req, res) => {
 
 export const watchVideo = (req, res) => {
     const id = req.params.id; // const { id } = req.params
-    const video = videos[id - 1];
-    return res.render("watch", {pageTitle: `Watching ${video.title}`, video});
+    return res.render("watch", {pageTitle: `Watching`});
 }
 
 export const getEdit = (req, res) => {
     const id = req.params.id; // const { id } = req.params
-    const video = videos[id - 1];
-    return res.render("edit", {pageTitle: `Editing: ${video.title}`, video});
+    return res.render("edit", {pageTitle: `Editing`});
 }
 
 export const postEdit = (req, res) => {
     const { id } = req.params;
     console.log(req.body); // post request로 보낸 data를 받는다.
     const { title } = req.body; 
-    videos[0].title = title;
     return res.redirect(`/videos/${id}`) // save click 후 redirection
 }
 
 export const deleteVideo = (req, res) => {
     res.send("Delete video");
+}
+
+export const getUpload = (req, res) => {
+    return res.render("upload", {pageTile: "Upload Video"});
+};
+
+export const postUpload = (req, res) => {
+    const { title } = req.body;
+    return res.redirect('/');
 }
 
